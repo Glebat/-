@@ -20,23 +20,23 @@ describe('Users DTO', () => {
       const dto = new CreateUserDto();
 
       const errors = await validate(dto);
-      expect(errors).toHaveLength(5); // first_name, last_name, email, phone_number, password
+      expect(errors).toHaveLength(5);
     });
 
     it('should fail validation for invalid types', async () => {
       const invalidDto = {
-        first_name: 123, // Неверный тип (ожидается строка)
-        last_name: 456, // Неверный тип (ожидается строка)
-        email: 'invalid-email', // Неверный формат email
-        phone_number: 'invalid-phone', // Неверный формат телефона
-        password: 'short', // Пароль слишком короткий (< 6 символов)
+        first_name: 123,
+        last_name: 456,
+        email: 'invalid-email',
+        phone_number: 'invalid-phone',
+        password: 'short',
       };
 
       const dto = new CreateUserDto();
-      Object.assign(dto, invalidDto); // Присваиваем некорректные значения
+      Object.assign(dto, invalidDto);
 
       const errors = await validate(dto);
-      expect(errors).toHaveLength(5); // Ожидаем 5 ошибок (по количеству невалидных полей)
+      expect(errors).toHaveLength(5);
     });
   });
 
@@ -57,23 +57,23 @@ describe('Users DTO', () => {
       const dto = new UpdateUserDto();
 
       const errors = await validate(dto);
-      expect(errors).toHaveLength(0); // Все поля опциональны
+      expect(errors).toHaveLength(0);
     });
 
     it('should fail validation for invalid types', async () => {
       const invalidDto = {
-        first_name: 123, // Неверный тип (ожидается строка)
-        last_name: 456, // Неверный тип (ожидается строка)
-        email: 'invalid-email', // Неверный формат email
-        phone_number: 'invalid-phone', // Неверный формат телефона
-        password: 'short', // Пароль слишком короткий (< 6 символов)
+        first_name: 123,
+        last_name: 456,
+        email: 'invalid-email',
+        phone_number: 'invalid-phone',
+        password: 'short',
       };
 
       const dto = new UpdateUserDto();
-      Object.assign(dto, invalidDto); // Присваиваем некорректные значения
+      Object.assign(dto, invalidDto);
 
       const errors = await validate(dto);
-      expect(errors).toHaveLength(5); // Ожидаем 5 ошибок (по количеству невалидных полей)
+      expect(errors).toHaveLength(5);
     });
   });
 });

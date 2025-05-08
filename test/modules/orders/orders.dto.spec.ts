@@ -20,7 +20,7 @@ describe('Orders DTO', () => {
       const dto = new CreateOrderDto();
 
       const errors = await validate(dto);
-      expect(errors).toHaveLength(5); // user_id, order_date, delivery_date, delivery_address, total_amount
+      expect(errors).toHaveLength(5);
     });
   });
 
@@ -39,7 +39,7 @@ describe('Orders DTO', () => {
       const dto = new UpdateOrderDto();
 
       const errors = await validate(dto);
-      expect(errors).toHaveLength(0); // Все поля опциональны
+      expect(errors).toHaveLength(0);
     });
   });
 });

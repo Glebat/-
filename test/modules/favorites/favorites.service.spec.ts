@@ -45,7 +45,6 @@ describe('Сервис избранного', () => {
 
       const result = await service.create(mockInput);
 
-      // Игнорируем разницу в миллисекундах
       expect(prismaMock.favorites.create).toHaveBeenCalledWith({
         data: expect.objectContaining({
           user_id: mockInput.user_id,
@@ -63,7 +62,6 @@ describe('Сервис избранного', () => {
         added_date: new Date(),
       };
 
-      // Подавляем console.error
       const consoleErrorSpy = jest.spyOn(console, 'error').mockImplementation(() => {});
 
       jest
@@ -74,7 +72,6 @@ describe('Сервис избранного', () => {
         'Ошибка базы данных',
       );
 
-      // Восстанавливаем console.error
       consoleErrorSpy.mockRestore();
     });
   });

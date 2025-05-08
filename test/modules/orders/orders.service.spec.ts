@@ -2,8 +2,6 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { OrdersService } from '../../../src/orders/orders.service';
 import { PrismaService } from '../../../src/prisma.service';
 import mockPrisma from '../../../test/utils/prisma-mock';
-import { CreateOrderDto } from '../../../src/orders/dto/create-order.dto';
-import { UpdateOrderDto } from '../../../src/orders/dto/update-order.dto';
 
 describe('OrdersService', () => {
   let service: OrdersService;

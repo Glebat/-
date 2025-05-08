@@ -36,7 +36,7 @@ describe('FavoritesController', () => {
       const mockInput = {
         user_id: 1,
         bouquet_id: 10,
-        added_date: new Date(), // Добавляем поле added_date
+        added_date: new Date(),
       };
 
       jest.spyOn(service, 'create').mockResolvedValue(mockInput);

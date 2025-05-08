@@ -2,8 +2,6 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { ReviewsService } from '../../../src/reviews/reviews.service';
 import { PrismaService } from '../../../src/prisma.service';
 import mockPrisma from '../../../test/utils/prisma-mock';
-import { CreateReviewDto } from '../../../src/reviews/dto/create-review.dto';
-import { UpdateReviewDto } from '../../../src/reviews/dto/update-review.dto';
 
 describe('ReviewsService', () => {
   let service: ReviewsService;

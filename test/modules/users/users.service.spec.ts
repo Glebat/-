@@ -2,8 +2,6 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { UsersService } from '../../../src/users/users.service';
 import { PrismaService } from '../../../src/prisma.service';
 import mockPrisma from '../../../test/utils/prisma-mock';
-import { CreateUserDto } from '../../../src/users/dto/create-user.dto';
-import { UpdateUserDto } from '../../../src/users/dto/update-user.dto';
 
 describe('UsersService', () => {
   let service: UsersService;
@@ -61,7 +59,6 @@ describe('UsersService', () => {
         password: 'securePassword123',
       };
 
-      // Подавляем console.error
       const consoleErrorSpy = jest.spyOn(console, 'error').mockImplementation(() => {});
 
       jest
@@ -72,7 +69,6 @@ describe('UsersService', () => {
         'Не удалось создать пользователя.',
       );
 
-      // Восстанавливаем console.error
       consoleErrorSpy.mockRestore();
     });
   });

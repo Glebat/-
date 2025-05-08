@@ -43,7 +43,6 @@ describe('CategoriesService', () => {
 
       const result = await service.create(mockInput);
 
-      // Проверяем, что вызов create содержит только данные из mockInput
       expect(prismaMock.categories.create).toHaveBeenCalledWith({
         data: mockInput,
       });

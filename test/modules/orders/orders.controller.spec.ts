@@ -38,7 +38,7 @@ describe('OrdersController', () => {
         order_date: new Date(),
         delivery_date: new Date(),
         delivery_address: '123 Main St',
-        total_amount: 3500 as any, // Используем any для total_amount
+        total_amount: 3500 as any,
         status: 'Shipped',
       };
 
@@ -60,7 +60,7 @@ describe('OrdersController', () => {
           order_date: new Date(),
           delivery_date: new Date(),
           delivery_address: '123 Main St',
-          total_amount: 3500 as any, // Используем any для total_amount
+          total_amount: 3500 as any,
           status: 'Shipped',
         },
         {
@@ -69,7 +69,7 @@ describe('OrdersController', () => {
           order_date: new Date(),
           delivery_date: new Date(),
           delivery_address: '456 Elm St',
-          total_amount: 4000 as any, // Используем any для total_amount
+          total_amount: 4000 as any,
           status: 'Processing',
         },
       ];
