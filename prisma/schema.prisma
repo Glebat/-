@@ -1,0 +1,81 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "generated"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model bouquets {
+  bouquet_id  Int           @id @default(autoincrement())
+  name        String
+  description String?
+  price       Int
+  image_url   String?
+  created_at  DateTime
+  category_id Int
+  categories  categories    @relation(fields: [category_id], references: [categories_id])
+  favorites   favorites[]
+  order_items order_items[]
+}
+
+model categories {
+  categories_id Int        @id @default(autoincrement())
+  name          String
+  bouquets      bouquets[]
+}
+
+model favorites {
+  user_id    Int
+  bouquet_id Int
+  added_date DateTime @default(now())
+  bouquets   bouquets @relation(fields: [bouquet_id], references: [bouquet_id])
+  users      users    @relation(fields: [user_id], references: [user_id])
+
+  @@id([user_id, bouquet_id])
+}
+
+model order_items {
+  order_id   Int
+  bouquet_id Int
+  quantity   Int
+  bouquets   bouquets @relation(fields: [bouquet_id], references: [bouquet_id])
+  orders     orders   @relation(fields: [order_id], references: [order_id])
+
+  @@id([order_id, bouquet_id])
+}
+
+model orders {
+  order_id         Int           @id @default(autoincrement())
+  user_id          Int
+  order_date       DateTime      @default(now())
+  delivery_date    DateTime?
+  delivery_address String?
+  total_amount     Decimal
+  status           String
+  order_items      order_items[]
+  users            users         @relation(fields: [user_id], references: [user_id])
+}
+
+model reviews {
+  reviews_id  Int      @id @default(autoincrement())
+  user_id     Int
+  comment     String?
+  rating      Int      @default(5)
+  review_date DateTime @default(now())
+  users       users    @relation(fields: [user_id], references: [user_id])
+}
+
+model users {
+  user_id      Int         @id @default(autoincrement())
+  first_name   String
+  last_name    String
+  email        String      @unique
+  phone_number String?
+  password     String
+  favorites    favorites[]
+  orders       orders[]
+  reviews      reviews[]
+}
